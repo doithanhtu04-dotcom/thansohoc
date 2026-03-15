@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Numerology Result</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg bg-light">
+<div class="container-fluid">
+
+<a class="navbar-brand brand-title" href="home.html">Numerology</a>
+
+<ul class="navbar-nav">
+
+<li class="nav-item">
+<a class="nav-link" href="home.html">Home</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="generate.html">Generate</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link active" href="result.html">Result</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="contact.html">Contact</a>
+</li>
+
+</ul>
+
+</div>
+</nav>
+
+<div class="container mt-5">
+
+<h2>Kết quả thần số học</h2>
+
+<p>Số chủ đạo của bạn là:</p>
+
+<h1 id="resultNumber"></h1>
+
+<a href="generate.html" class="btn btn-primary">Thử lại</a>
+
+</div>
+
+<script>
+
+let number = localStorage.getItem("lifePath");
+
+document.getElementById("resultNumber").innerHTML = number;
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
