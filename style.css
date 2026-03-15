@@ -1,8 +1,28 @@
 body{
-background-color:#f4f4f4;
+background-color:#f6f1e7;
+}
+
+.navbar{
+background-color:#d4b483;
 }
 
 .brand-title{
 font-size:30px;
 font-weight:bold;
+color:#3b2f1e;
+}
+
+.card{
+background-color:#fff8ee;
+border:1px solid #e6c79c;
+}
+
+.btn-primary{
+background-color:#a67c52;
+border:none;
+}
+
+.btn-success{
+background-color:#b68b59;
+border:none;
 }
