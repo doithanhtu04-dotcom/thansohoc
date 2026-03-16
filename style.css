@@ -1,28 +1,37 @@
-body{
-background-color:#f6f1e7;
+body {
+    background: linear-gradient(135deg, #0d0d0f, #1a1a2e);
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
 }
 
-.navbar{
-background-color:#d4b483;
+.navbar {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
 }
 
-.brand-title{
-font-size:30px;
-font-weight:bold;
-color:#3b2f1e;
+.brand-title {
+    font-size: 30px;
+    font-weight: bold;
+    color: #fff;
 }
 
-.card{
-background-color:#fff8ee;
-border:1px solid #e6c79c;
+.card {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(10px);
+    color: #fff;
 }
 
-.btn-primary{
-background-color:#a67c52;
-border:none;
+.btn-primary {
+    background: linear-gradient(45deg, #00eaff, #9a4dff);
+    border: none;
+    color: #000;
+    font-weight: 600;
 }
 
-.btn-success{
-background-color:#b68b59;
-border:none;
+.btn-success {
+    background: linear-gradient(45deg, #21ffa8, #00eaff);
+    border: none;
+    color: #000;
+    font-weight: 600;
 }
