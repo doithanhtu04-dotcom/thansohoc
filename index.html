@@ -1,58 +1,86 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <title>Numerology Home</title>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
 
+<style>
+    body {
+        background: url("https://i.imgur.com/eT6gE8x.jpg");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        font-family: Arial, sans-serif;
+    }
+
+    .content-box {
+        background: rgba(255, 255, 255, 0.85);
+        padding: 25px;
+        border-radius: 8px;
+        margin-top: 40px;
+    }
+
+    .navbar {
+        background-color: #f8f9fa;
+    }
+
+    .feature-icon {
+        width: 70px;
+    }
+</style>
 </head>
 
 <body>
 
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-lg navbar-light">
 <div class="container-fluid">
+    <a class="navbar-brand" href="index.html">Numerology</a>
 
-<a class="navbar-brand brand-title" href="index.html">Numerology</a>
-
-<ul class="navbar-nav">
-
-<li class="nav-item">
-<a class="nav-link active" href="index.html">Home</a>
-</li>
-
-<li class="nav-item">
-<a class="nav-link" href="generate.html">Generate</a>
-</li>
-
-<li class="nav-item">
-<a class="nav-link" href="result.html">Result</a>
-</li>
-
-<li class="nav-item">
-<a class="nav-link" href="contact.html">Contact</a>
-</li>
-
-</ul>
-
+    <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="generate.html">Generate</a></li>
+        <li class="nav-item"><a class="nav-link" href="result.html">Result</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+    </ul>
 </div>
 </nav>
 
-<div class="container mt-5">
+<div class="container">
+    <div class="content-box">
 
-<h1>Free Numerology Website</h1>
+        <h1 class="text-center">Free Numerology Website</h1>
+        <p class="text-center">
+            Website này giúp bạn tra cứu thần số học cơ bản dựa trên họ tên và ngày sinh.
+        </p>
 
-<p>
-Website này giúp bạn tra cứu thần số học cơ bản.
-</p>
+        <div class="row text-center mt-4">
 
-<p>
-Nhập họ tên và ngày sinh để biết số chủ đạo, nhóm tính cách và nghề nghiệp phù hợp.
-</p>
+            <div class="col-md-4">
+                <img src="https://i.imgur.com/BkaJq8C.png" class="feature-icon" alt="">
+                <h5>Số chủ đạo</h5>
+                <p>Khám phá con số quan trọng nhất trong đời bạn.</p>
+            </div>
 
-<a href="generate.html" class="btn btn-primary">Bắt đầu tra cứu</a>
+            <div class="col-md-4">
+                <img src="https://i.imgur.com/7n7B9tj.png" class="feature-icon" alt="">
+                <h5>Tính cách</h5>
+                <p>Những đặc điểm tự nhiên bẩm sinh.</p>
+            </div>
 
+            <div class="col-md-4">
+                <img src="https://i.imgur.com/ScQvINS.png" class="feature-icon" alt="">
+                <h5>Nghề nghiệp</h5>
+                <p>Gợi ý công việc phù hợp theo thần số học.</p>
+            </div>
+
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="generate.html" class="btn btn-primary">Bắt đầu tra cứu</a>
+        </div>
+
+    </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
