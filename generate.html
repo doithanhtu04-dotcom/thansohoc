@@ -1,111 +1,112 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById("numerologyForm");
-    const nameInput = document.getElementById("name");
-    const birthInput = document.getElementById("birthdate");
+<!DOCTYPE html>
+<html>
+<head>
+<title>Numerology Generate</title>
 
-    if (!form) {
-        console.error("❌ numerologyForm NOT FOUND");
-        return;
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+    body {
+        background: linear-gradient(135deg, #0d0d0f, #1a1a2e);
+        color: #fff;
+        min-height: 100vh;
+        font-family: 'Poppins', sans-serif;
     }
 
-    form.addEventListener("submit", function (e) {
-        e.preventDefault();
+    .navbar {
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(12px);
+    }
 
-        if (!nameInput || !birthInput) {
-            alert("Lỗi input! Kiểm tra lại ID name và birthdate trong HTML.");
-            return;
-        }
+    .navbar-brand {
+        color: #fff;
+        font-weight: 600;
+    }
 
-        let fullName = nameInput.value.trim();
-        let birthdate = birthInput.value;
+    .nav-link {
+        color: #ccc !important;
+    }
 
-        if (!fullName || !birthdate) {
-            alert("Vui lòng nhập đủ thông tin!");
-            return;
-        }
+    .nav-link.active, .nav-link:hover {
+        color: #00eaff !important;
+    }
 
-        if (!birthdate.includes("-")) {
-            alert("Ngày sinh không hợp lệ!");
-            return;
-        }
+    .glass-box {
+        background: rgba(255,255,255,0.08);
+        border: 1px solid rgba(255,255,255,0.15);
+        padding: 35px;
+        margin-top: 60px;
+        border-radius: 20px;
+        backdrop-filter: blur(18px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    }
 
-        // ------------------------------
-        // HÀM RÚT GỌN SỐ
-        // ------------------------------
-        function reduceNumber(num) {
-            while (num > 9 && num !== 11 && num !== 22) {
-                num = num.toString().split("").reduce((a, b) => a + parseInt(b), 0);
-            }
-            return num;
-        }
+    .btn-custom {
+        background: linear-gradient(45deg, #00eaff, #9a4dff);
+        border: none;
+        padding: 12px 26px;
+        border-radius: 14px;
+        color: #000;
+        font-weight: 600;
+        margin-top: 20px;
+        transition: 0.2s;
+    }
 
-        // ------------------------------
-        // BẢNG CHỮ -> SỐ
-        // ------------------------------
-        const letterMap = {
-            A:1, J:1, S:1,
-            B:2, K:2, T:2,
-            C:3, L:3, U:3,
-            D:4, M:4, V:4,
-            E:5, N:5, W:5,
-            F:6, O:6, X:6,
-            G:7, P:7, Y:7,
-            H:8, Q:8, Z:8,
-            I:9, R:9
-        };
+    .btn-custom:hover {
+        opacity: 0.85;
+        transform: scale(1.02);
+    }
+</style>
+</head>
 
-        // ------------------------------
-        // TÍNH TỪ TÊN
-        // ------------------------------
-        function calcFromName(name, vowelsOnly = false, consonantsOnly = false) {
-            let sum = 0;
-            name = name.toUpperCase().replace(/[^A-Z]/g, "");
-            const vowels = ["A", "E", "I", "O", "U"];
+<body>
 
-            name.split("").forEach(letter => {
-                if (!letterMap[letter]) return;
+<!-- NAV -->
+<nav class="navbar navbar-expand-lg">
+<div class="container-fluid">
 
-                if (vowelsOnly && vowels.includes(letter)) sum += letterMap[letter];
-                else if (consonantsOnly && !vowels.includes(letter)) sum += letterMap[letter];
-                else if (!vowelsOnly && !consonantsOnly) sum += letterMap[letter];
-            });
+    <a class="navbar-brand" href="index.html">Numerology</a>
 
-            return reduceNumber(sum);
-        }
+    <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link active" href="generate.html">Generate</a></li>
+        <li class="nav-item"><a class="nav-link" href="result.html">Result</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+    </ul>
 
-        // ------------------------------
-        // TÍNH TỪ NGÀY SINH
-        // ------------------------------
-        function calcFromBirth(birth) {
-            let digits = birth.replaceAll("-", "").split("");
-            let sum = digits.reduce((a, b) => a + parseInt(b), 0);
-            return reduceNumber(sum);
-        }
+</div>
+</nav>
 
-        // ------------------------------
-        // TÍNH TOÁN
-        // ------------------------------
-        const soul = calcFromName(fullName, true);
-        const personality = calcFromName(fullName, false, true);
-        const destiny = calcFromName(fullName);
-        const thinking = calcFromBirth(birthdate);
+<!-- CONTENT -->
+<div class="container">
+    <div class="glass-box">
 
-        const attitude = reduceNumber(
-            parseInt(birthdate.split("-")[2]) + parseInt(birthdate.split("-")[1])
-        );
+        <h2 class="text-center mb-4" style="
+            background: linear-gradient(90deg,#00eaff,#9a4dff);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+            Nhập thông tin
+        </h2>
 
-        const maturity = reduceNumber(destiny + thinking);
+        <form>
 
-        // ------------------------------
-        // LƯU LOCAL STORAGE
-        // ------------------------------
-        localStorage.setItem("soul", soul);
-        localStorage.setItem("personality", personality);
-        localStorage.setItem("destiny", destiny);
-        localStorage.setItem("attitude", attitude);
-        localStorage.setItem("thinking", thinking);
-        localStorage.setItem("maturity", maturity);
+            <div class="mb-3">
+                <label class="form-label">Họ và tên</label>
+                <input type="text" class="form-control" placeholder="Nhập tên của bạn">
+            </div>
 
-        window.location.href = "result.html";
-    });
-});
+            <div class="mb-3">
+                <label class="form-label">Ngày sinh</label>
+                <input type="date" class="form-control">
+            </div>
+
+            <button type="button" class="btn-custom">Xem kết quả</button>
+
+        </form>
+
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
