@@ -1,25 +1,31 @@
 document.getElementById("numerologyForm").addEventListener("submit", function(e){
+    e.preventDefault();
 
-e.preventDefault();
+    let birthdate = document.getElementById("birthdate").value; 
 
-let birthdate = document.getElementById("birthdate").value;
+ 
+    function reduceNumber(num) {
+        if (num === 11 || num === 22) return num; // giữ master
 
-let numbers = birthdate.replaceAll("-","").split("");
+        while (num > 9) {
+            num = num
+                .toString()
+                .split("")
+                .reduce((a,b) => parseInt(a) + parseInt(b), 0);
+        }
+        return num;
+    }
 
-let sum = 0;
+ 
+    let digits = birthdate.replaceAll("-", "").split("");
 
-numbers.forEach(function(n){
-sum += parseInt(n);
-});
+    let total = digits.reduce((a,b) => a + parseInt(b), 0);
 
-while(sum > 9){
-sum = sum.toString().split("").reduce(function(a,b){
-return parseInt(a) + parseInt(b);
-});
-}
+    let lifePath = reduceNumber(total);
 
-localStorage.setItem("lifePath", sum);
+  
+    localStorage.setItem("lifePath", lifePath);
 
-window.location.href = "result.html";
-
+ 
+    window.location.href = "result.html";
 });
