@@ -1,79 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Generate Numerology</title>
 
-function reduceNumber(num) {
-    while (num > 9 && num !== 11 && num !== 22) {
-        num = num.toString().split("").reduce((a, b) => a + parseInt(b), 0);
-    }
-    return num;
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+body {
+    background: linear-gradient(135deg, #0d0d0f, #1a1a2e);
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
 }
-
-
-const letterMap = {
-    A:1, J:1, S:1,
-    B:2, K:2, T:2,
-    C:3, L:3, U:3,
-    D:4, M:4, V:4,
-    E:5, N:5, W:5,
-    F:6, O:6, X:6,
-    G:7, P:7, Y:7,
-    H:8, Q:8, Z:8,
-    I:9, R:9
-};
-
-
-function calcFromName(name, vowelsOnly = false, consonantsOnly = false) {
-    let sum = 0;
-
-    name = name.toUpperCase().replace(/[^A-Z]/g, "");
-
-    const vowels = ["A", "E", "I", "O", "U"];
-
-    name.split("").forEach(letter => {
-        if (letterMap[letter]) {
-            if (vowelsOnly && vowels.includes(letter)) sum += letterMap[letter];
-            else if (consonantsOnly && !vowels.includes(letter)) sum += letterMap[letter];
-            else if (!vowelsOnly && !consonantsOnly) sum += letterMap[letter];
-        }
-    });
-
-    return reduceNumber(sum);
+.form-box {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 25px;
+    border-radius: 16px;
+    backdrop-filter: blur(12px);
+    margin-top: 50px;
 }
-
-
-function calcFromBirth(birth) {
-    let nums = birth.replaceAll("-", "").split("");
-    let sum = nums.reduce((a, b) => a + parseInt(b), 0);
-    return reduceNumber(sum);
+label { margin-top: 10px; }
+.btn-custom {
+    background: linear-gradient(45deg, #00eaff, #9a4dff);
+    border: none;
+    padding: 12px;
+    font-weight: 600;
+    border-radius: 10px;
+    width: 100%;
+    margin-top: 20px;
 }
+</style>
+</head>
 
-document.getElementById("numerologyForm").addEventListener("submit", function(e) {
-    e.preventDefault();
+<body>
 
-    let fullName = document.getElementById("name").value.trim();
-    let birthdate = document.getElementById("birthdate").value;
+<div class="container">
+    <div class="form-box">
+        <h2>Tra cứu Thần số học</h2>
 
-    if (!fullName || !birthdate) {
-        alert("Vui lòng nhập đủ thông tin!");
-        return;
-    }
+        <form id="numerologyForm">
 
- 
-    const soul = calcFromName(fullName, true);              // Linh hồn
-    const personality = calcFromName(fullName, false, true); // Nhân cách
-    const destiny = calcFromName(fullName);                  // Sứ mệnh
-    const attitude = reduceNumber(
-        birthdate.split("-")[2] * 1 + birthdate.split("-")[1] * 1
-    ); // Thái độ
-    const maturity = reduceNumber(destiny + calcFromBirth(birthdate));
-    const thinking = calcFromBirth(birthdate);               // Tư duy (Life Path)
+            <label>Họ và tên</label>
+            <input id="name" type="text" class="form-control" placeholder="VD: Nguyễn Văn A">
 
-  
-    localStorage.setItem("soul", soul);
-    localStorage.setItem("personality", personality);
-    localStorage.setItem("destiny", destiny);
-    localStorage.setItem("attitude", attitude);
-    localStorage.setItem("maturity", maturity);
-    localStorage.setItem("thinking", thinking);
+            <label>Ngày sinh</label>
+            <input id="birthdate" type="date" class="form-control">
 
-    
-    window.location.href = "result.html";
-});
+            <button class="btn-custom" type="submit">Xem kết quả</button>
+        </form>
+    </div>
+</div>
+
+<script src="generate.js"></script>
+</body>
+</html>
