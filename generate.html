@@ -1,68 +1,139 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <title>Generate Numerology</title>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
 
+<style>
+    body {
+        background: linear-gradient(135deg, #0d0d0f, #1a1a2e);
+        color: #fff;
+        min-height: 100vh;
+        padding-bottom: 50px;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .navbar {
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(12px);
+    }
+
+    .brand-title {
+        color: #fff;
+        font-weight: 600;
+        letter-spacing: 1px;
+    }
+
+    .nav-link {
+        color: #dcdcdc !important;
+        margin-right: 10px;
+    }
+
+    .nav-link.active,
+    .nav-link:hover {
+        color: #00eaff !important;
+    }
+
+    h2 {
+        background: linear-gradient(90deg, #00eaff, #9a4dff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size: 32px;
+        font-weight: 600;
+        margin-bottom: 25px;
+        text-align: center;
+    }
+
+    .glass-card {
+        padding: 30px;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255,255,255,0.12);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        backdrop-filter: blur(18px);
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+        animation: fadeIn 0.8s ease;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .btn-custom {
+        width: 100%;
+        background: linear-gradient(45deg, #00eaff, #9a4dff);
+        border: none;
+        color: black;
+        font-weight: 600;
+        padding: 12px;
+        border-radius: 12px;
+        transition: 0.2s;
+    }
+
+    .btn-custom:hover {
+        opacity: 0.85;
+        transform: scale(1.02);
+    }
+
+    label {
+        font-size: 15px;
+        font-weight: 500;
+    }
+
+    input {
+        border-radius: 12px !important;
+    }
+</style>
 </head>
 
 <body>
 
+<!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg">
 <div class="container-fluid">
-
-<a class="navbar-brand brand-title" href="index.html">Numerology</a>
-
-<ul class="navbar-nav">
-
-<li class="nav-item">
-<a class="nav-link" href="index.html">Home</a>
-</li>
-
-<li class="nav-item">
-<a class="nav-link active" href="generate.html">Generate</a>
-</li>
-
-<li class="nav-item">
-<a class="nav-link" href="result.html">Result</a>
-</li>
-
-<li class="nav-item">
-<a class="nav-link" href="contact.html">Contact</a>
-</li>
-
-</ul>
-
+    <a class="navbar-brand brand-title" href="index.html">Numerology</a>
+    <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link active" href="generate.html">Generate</a></li>
+        <li class="nav-item"><a class="nav-link" href="result.html">Result</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+    </ul>
 </div>
 </nav>
 
+
+<!-- MAIN CONTENT -->
 <div class="container mt-5">
 
-<h2>Nhập thông tin</h2>
+    <div class="glass-card">
 
-<form id="numerologyForm">
+        <h2>Nhập thông tin</h2>
 
-<div class="mb-3">
-<label>Họ và tên</label>
-<input type="text" class="form-control" id="name" required>
-</div>
+        <form id="numerologyForm">
 
-<div class="mb-3">
-<label>Ngày sinh</label>
-<input type="date" class="form-control" id="birthdate" required>
-</div>
+            <div class="mb-3">
+                <label>Họ và tên</label>
+                <input type="text" class="form-control" id="name" required>
+            </div>
 
-<button type="submit" class="btn btn-success">Phân tích</button>
+            <div class="mb-3">
+                <label>Ngày sinh</label>
+                <input type="date" class="form-control" id="birthdate" required>
+            </div>
 
-</form>
+            <button type="submit" class="btn-custom">Phân tích</button>
+
+        </form>
+
+    </div>
 
 </div>
 
 <script src="script.js"></script>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
