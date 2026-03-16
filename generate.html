@@ -1,56 +1,111 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Generate Numerology</title>
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("numerologyForm");
+    const nameInput = document.getElementById("name");
+    const birthInput = document.getElementById("birthdate");
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    if (!form) {
+        console.error("❌ numerologyForm NOT FOUND");
+        return;
+    }
 
-<style>
-body {
-    background: linear-gradient(135deg, #0d0d0f, #1a1a2e);
-    color: #fff;
-    font-family: 'Poppins', sans-serif;
-}
-.form-box {
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.15);
-    padding: 25px;
-    border-radius: 16px;
-    backdrop-filter: blur(12px);
-    margin-top: 50px;
-}
-label { margin-top: 10px; }
-.btn-custom {
-    background: linear-gradient(45deg, #00eaff, #9a4dff);
-    border: none;
-    padding: 12px;
-    font-weight: 600;
-    border-radius: 10px;
-    width: 100%;
-    margin-top: 20px;
-}
-</style>
-</head>
+    form.addEventListener("submit", function (e) {
+        e.preventDefault();
 
-<body>
+        if (!nameInput || !birthInput) {
+            alert("Lỗi input! Kiểm tra lại ID name và birthdate trong HTML.");
+            return;
+        }
 
-<div class="container">
-    <div class="form-box">
-        <h2>Tra cứu Thần số học</h2>
+        let fullName = nameInput.value.trim();
+        let birthdate = birthInput.value;
 
-        <form id="numerologyForm">
+        if (!fullName || !birthdate) {
+            alert("Vui lòng nhập đủ thông tin!");
+            return;
+        }
 
-            <label>Họ và tên</label>
-            <input id="name" type="text" class="form-control" placeholder="VD: Nguyễn Văn A">
+        if (!birthdate.includes("-")) {
+            alert("Ngày sinh không hợp lệ!");
+            return;
+        }
 
-            <label>Ngày sinh</label>
-            <input id="birthdate" type="date" class="form-control">
+        // ------------------------------
+        // HÀM RÚT GỌN SỐ
+        // ------------------------------
+        function reduceNumber(num) {
+            while (num > 9 && num !== 11 && num !== 22) {
+                num = num.toString().split("").reduce((a, b) => a + parseInt(b), 0);
+            }
+            return num;
+        }
 
-            <button class="btn-custom" type="submit">Xem kết quả</button>
-        </form>
-    </div>
-</div>
+        // ------------------------------
+        // BẢNG CHỮ -> SỐ
+        // ------------------------------
+        const letterMap = {
+            A:1, J:1, S:1,
+            B:2, K:2, T:2,
+            C:3, L:3, U:3,
+            D:4, M:4, V:4,
+            E:5, N:5, W:5,
+            F:6, O:6, X:6,
+            G:7, P:7, Y:7,
+            H:8, Q:8, Z:8,
+            I:9, R:9
+        };
 
-<script src="generate.js"></script>
-</body>
-</html>
+        // ------------------------------
+        // TÍNH TỪ TÊN
+        // ------------------------------
+        function calcFromName(name, vowelsOnly = false, consonantsOnly = false) {
+            let sum = 0;
+            name = name.toUpperCase().replace(/[^A-Z]/g, "");
+            const vowels = ["A", "E", "I", "O", "U"];
+
+            name.split("").forEach(letter => {
+                if (!letterMap[letter]) return;
+
+                if (vowelsOnly && vowels.includes(letter)) sum += letterMap[letter];
+                else if (consonantsOnly && !vowels.includes(letter)) sum += letterMap[letter];
+                else if (!vowelsOnly && !consonantsOnly) sum += letterMap[letter];
+            });
+
+            return reduceNumber(sum);
+        }
+
+        // ------------------------------
+        // TÍNH TỪ NGÀY SINH
+        // ------------------------------
+        function calcFromBirth(birth) {
+            let digits = birth.replaceAll("-", "").split("");
+            let sum = digits.reduce((a, b) => a + parseInt(b), 0);
+            return reduceNumber(sum);
+        }
+
+        // ------------------------------
+        // TÍNH TOÁN
+        // ------------------------------
+        const soul = calcFromName(fullName, true);
+        const personality = calcFromName(fullName, false, true);
+        const destiny = calcFromName(fullName);
+        const thinking = calcFromBirth(birthdate);
+
+        const attitude = reduceNumber(
+            parseInt(birthdate.split("-")[2]) + parseInt(birthdate.split("-")[1])
+        );
+
+        const maturity = reduceNumber(destiny + thinking);
+
+        // ------------------------------
+        // LƯU LOCAL STORAGE
+        // ------------------------------
+        localStorage.setItem("soul", soul);
+        localStorage.setItem("personality", personality);
+        localStorage.setItem("destiny", destiny);
+        localStorage.setItem("attitude", attitude);
+        localStorage.setItem("thinking", thinking);
+        localStorage.setItem("maturity", maturity);
+
+        window.location.href = "result.html";
+    });
+});
