@@ -16,116 +16,65 @@
         background: rgba(255, 255, 255, 0.08);
         backdrop-filter: blur(12px);
     }
-    .navbar-brand {
-        color: #fff;
-        font-weight: 600;
-    }
-    .nav-link {
-        color: #ccc !important;
-    }
-    .nav-link.active, .nav-link:hover {
-        color: #00eaff !important;
-    }
+    .navbar-brand { color: #fff; font-weight: 600; }
+    .nav-link { color: #ccc !important; }
+    .nav-link.active, .nav-link:hover { color: #00eaff !important; }
+
     .glass-box {
         background: rgba(255,255,255,0.08);
         border: 1px solid rgba(255,255,255,0.15);
-        padding: 35px;
-        margin-top: 60px;
-        border-radius: 20px;
-        backdrop-filter: blur(18px);
-        box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        padding: 35px; margin-top: 60px;
+        border-radius: 20px; backdrop-filter: blur(18px);
     }
     .btn-custom {
         background: linear-gradient(45deg, #00eaff, #9a4dff);
-        border: none;
-        padding: 12px 26px;
-        border-radius: 14px;
-        color: #000;
-        font-weight: 600;
-        margin-top: 20px;
-        transition: 0.2s;
+        border: none; padding: 12px 26px;
+        border-radius: 14px; color: #000;
+        font-weight: 600; margin-top: 20px;
     }
-    .btn-custom:hover {
-        opacity: 0.85;
-        transform: scale(1.02);
-    }
+    .btn-custom:hover { opacity: 0.85; transform: scale(1.02); }
 </style>
 </head>
 
 <body>
 
-<!-- NAV -->
 <nav class="navbar navbar-expand-lg">
 <div class="container-fluid">
-
     <a class="navbar-brand" href="index.html">Numerology</a>
-
     <ul class="navbar-nav ms-auto">
         <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
         <li class="nav-item"><a class="nav-link active" href="generate.html">Generate</a></li>
         <li class="nav-item"><a class="nav-link" href="result.html">Result</a></li>
         <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
     </ul>
-
 </div>
 </nav>
 
 <div class="container">
     <div class="glass-box">
-
-        <h2 class="text-center mb-4" style="
-            background: linear-gradient(90deg,#00eaff,#9a4dff);
+        <h2 class="text-center mb-4"
+            style="background: linear-gradient(90deg,#00eaff,#9a4dff);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
             Nhập thông tin
         </h2>
 
         <form id="numerologyForm">
-
             <div class="mb-3">
                 <label class="form-label">Họ và tên</label>
-                <input id="name" type="text" class="form-control" placeholder="Nhập tên của bạn" required>
+                <input type="text" id="name" class="form-control">
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Ngày sinh</label>
-                <input id="birthdate" type="date" class="form-control" required>
+                <input type="date" id="birthdate" class="form-control">
             </div>
 
             <button type="submit" class="btn-custom">Xem kết quả</button>
-
         </form>
-
     </div>
 </div>
 
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById("numerologyForm");
-    const nameInput = document.getElementById("name");
-    const birthInput = document.getElementById("birthdate");
-
-    form.addEventListener("submit", function(e) {
-        e.preventDefault();
-
-        const name = nameInput.value.trim();
-        const birth = birthInput.value;
-
-        if (!name || !birth) {
-            alert("Vui lòng nhập đầy đủ thông tin!");
-            return;
-        }
-
- 
-        localStorage.setItem("numerology_name", name);
-        localStorage.setItem("numerology_birth", birth);
-
-    
-        window.location.href = "result.html";
-    });
-});
-</script>
-
+<script src="script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-
 </body>
 </html>
