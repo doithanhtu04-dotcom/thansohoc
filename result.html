@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <title>Numerology Result</title>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -11,82 +10,35 @@
         background: linear-gradient(135deg, #0d0d0f, #1a1a2e);
         color: #fff;
         min-height: 100vh;
-        padding-bottom: 40px;
         font-family: 'Poppins', sans-serif;
     }
     .navbar {
         background: rgba(255, 255, 255, 0.08);
         backdrop-filter: blur(12px);
     }
-    .navbar-brand {
-        color: #fff;
-        font-weight: 600;
-        font-size: 22px;
-        letter-spacing: 1px;
-    }
-    .nav-link {
-        color: #dcdcdc !important;
-        margin-right: 10px;
-    }
-    .nav-link.active,
-    .nav-link:hover {
-        color: #00eaff !important;
-    }
-    h2 {
-        text-align: center;
-        background: linear-gradient(90deg, #00eaff, #9a4dff);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        font-weight: 700;
-        font-size: 32px;
-        margin-top: 30px;
+    .navbar-brand { color: #fff; font-weight: 600; }
+    .nav-link { color: #ccc !important; }
+    .nav-link.active, .nav-link:hover { color: #00eaff !important; }
+
+    .glass-card {
+        background: rgba(255,255,255,0.08);
+        border: 1px solid rgba(255,255,255,0.15);
+        padding: 25px;
+        border-radius: 18px;
+        margin-bottom: 20px;
     }
     #resultNumber {
         text-align: center;
         font-size: 46px;
         font-weight: 700;
-        background: linear-gradient(90deg, #9a4dff, #00eaff);
+        background: linear-gradient(90deg,#9a4dff,#00eaff);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        margin-bottom: 25px;
-    }
-    .glass-card {
-        background: rgba(255,255,255,0.08);
-        border: 1px solid rgba(255,255,255,0.15);
-        border-radius: 18px;
-        padding: 25px;
-        margin-bottom: 25px;
-        backdrop-filter: blur(16px);
-        box-shadow: 0 8px 28px rgba(0,0,0,0.35);
-        animation: fadeIn 0.8s ease;
-    }
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-    .btn-custom {
-        width: 220px;
-        background: linear-gradient(45deg, #00eaff, #9a4dff);
-        border: none;
-        padding: 14px;
-        border-radius: 14px;
-        font-weight: 600;
-        color: #000;
-        display: block;
-        margin: 25px auto 0;
-        transition: 0.2s;
-        text-align: center;
-    }
-    .btn-custom:hover {
-        opacity: 0.85;
-        transform: scale(1.02);
     }
 </style>
-
 </head>
 
 <body>
-
 
 <nav class="navbar navbar-expand-lg">
 <div class="container-fluid">
@@ -100,10 +52,9 @@
 </div>
 </nav>
 
-
 <div class="container mt-4">
 
-    <h2>Kết quả thần số học</h2>
+    <h2 class="text-center">Kết quả thần số học</h2>
     <div id="resultNumber"></div>
 
     <div class="glass-card">
@@ -121,58 +72,10 @@
         <p id="cycle"></p>
     </div>
 
-    <a href="generate.html" class="btn-custom">Thử lại</a>
-
+    <a href="generate.html" class="btn btn-light mt-3">Thử lại</a>
 </div>
 
-
-<script>
-
-let number = localStorage.getItem("numerology_lifePath");
-
-document.getElementById("resultNumber").innerHTML = "Số chủ đạo: " + number;
-
-
-let personalityData = {
-    1:"Bạn mạnh mẽ, độc lập, có khả năng dẫn dắt và luôn muốn đứng ở vị trí chủ động.",
-    2:"Bạn nhẹ nhàng, tinh tế và khéo léo trong giao tiếp. Hợp làm việc nhóm.",
-    3:"Năng lượng sáng tạo mạnh, vui vẻ, hòa đồng và thích thể hiện bản thân.",
-    4:"Bạn thực tế, kỷ luật, đáng tin cậy và rất kiên trì khi làm việc.",
-    5:"Yêu tự do, thích khám phá, linh hoạt và luôn mang đến sự mới mẻ.",
-    6:"Bạn quan tâm gia đình, có trách nhiệm và mang năng lượng chữa lành.",
-    7:"Bạn thích đào sâu, suy ngẫm, có trực giác mạnh và ham học hỏi.",
-    8:"Bạn có tư duy kinh doanh, mạnh mẽ, quyết đoán và hướng đến thành công.",
-    9:"Trưởng thành, nhân ái, giàu tình cảm và có xu hướng giúp đỡ mọi người."
-};
-
-document.getElementById("personality").innerHTML = personalityData[number];
-
-// NGHỀ NGHIỆP
-let careerData = {
-    1:["Lãnh đạo", "Quản lý", "Startup", "Doanh nhân"],
-    2:["Tư vấn", "Nhân sự", "Giáo viên", "Tâm lý"],
-    3:["MC", "Marketing", "Content Creator", "Truyền thông"],
-    4:["Kỹ sư", "Lập trình", "Kiến trúc", "Kế toán"],
-    5:["Du lịch", "Hướng dẫn viên", "Bán hàng", "Tổ chức sự kiện"],
-    6:["Y tế", "Giáo dục", "Chăm sóc khách hàng", "Công tác xã hội"],
-    7:["Nghiên cứu", "Phân tích dữ liệu", "Giảng viên", "IT"],
-    8:["Tài chính", "Đầu tư", "Bất động sản", "Quản trị"],
-    9:["Nghệ thuật", "Từ thiện", "Giáo dục", "Tâm lý"]
-};
-
-let html = "";
-careerData[number].forEach(job => html += `<li>${job}</li>`);
-document.getElementById("career").innerHTML = html;
-
-
-document.getElementById("cycle").innerHTML = `
-    • Giai đoạn 1 (0–27 tuổi): Học hỏi và xây nền tảng.<br>
-    • Giai đoạn 2 (28–54 tuổi): Phát triển mạnh mẽ và mở rộng bản thân.<br>
-    • Giai đoạn 3 (55+ tuổi): Gặt hái thành tựu và sống trọn vẹn.
-`;
-</script>
-
+<script src="script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-
 </body>
 </html>
