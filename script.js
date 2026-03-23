@@ -14,17 +14,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-            // Tính số chủ đạo
             const digits = birth.replace(/-/g, "").split("");
             let total = digits.reduce((sum, d) => sum + Number(d), 0);
 
             function reduce(num) {
                 if (num === 11 || num === 22) return num;
                 while (num > 9) {
-                    num = num
-                        .toString()
-                        .split("")
-                        .reduce((s, d) => s + Number(d), 0);
+                    num = num.toString().split("").reduce((s, d) => s + Number(d), 0);
                 }
                 return num;
             }
@@ -40,10 +36,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-// HIỂN THỊ KẾT QUẢ Ở RESULT.HTML
 if (window.location.pathname.includes("result.html")) {
+
     let number = localStorage.getItem("numerology_lifePath");
-    document.getElementById("resultNumber").innerHTML = "Số chủ đạo: " + number;
+
+    document.getElementById("resultNumber").innerHTML =
+        "Số chủ đạo: " + number;
 
     const personalityData = {
         1: "Bạn mạnh mẽ, độc lập, có khả năng dẫn dắt.",
@@ -59,10 +57,10 @@ if (window.location.pathname.includes("result.html")) {
 
     const careerData = {
         1: ["Lãnh đạo", "Startup", "Quản lý"],
-        2: ["Nhân sự", "Tư vấn", "Teacher"],
-        3: ["Marketing", "MC", "Content"],
+        2: ["Nhân sự", "Tư vấn", "Giáo viên"],
+        3: ["Marketing", "MC", "Content Creator"],
         4: ["Engineer", "IT", "Kế toán"],
-        5: ["Du lịch", "Sales", "Sự kiện"],
+        5: ["Du lịch", "Sales", "Tổ chức sự kiện"],
         6: ["Y tế", "Giáo dục"],
         7: ["Nghiên cứu", "Phân tích dữ liệu"],
         8: ["Tài chính", "Đầu tư"],
