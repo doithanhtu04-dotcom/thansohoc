@@ -14,31 +14,24 @@
         padding-bottom: 40px;
         font-family: 'Poppins', sans-serif;
     }
-
-    /* Navbar */
     .navbar {
         background: rgba(255, 255, 255, 0.08);
         backdrop-filter: blur(12px);
     }
-
     .navbar-brand {
         color: #fff;
         font-weight: 600;
         font-size: 22px;
         letter-spacing: 1px;
     }
-
     .nav-link {
         color: #dcdcdc !important;
         margin-right: 10px;
     }
-
     .nav-link.active,
     .nav-link:hover {
         color: #00eaff !important;
     }
-
-    /* Result Number */
     h2 {
         text-align: center;
         background: linear-gradient(90deg, #00eaff, #9a4dff);
@@ -48,7 +41,6 @@
         font-size: 32px;
         margin-top: 30px;
     }
-
     #resultNumber {
         text-align: center;
         font-size: 46px;
@@ -58,8 +50,6 @@
         -webkit-text-fill-color: transparent;
         margin-bottom: 25px;
     }
-
-    /* Cards */
     .glass-card {
         background: rgba(255,255,255,0.08);
         border: 1px solid rgba(255,255,255,0.15);
@@ -70,13 +60,10 @@
         box-shadow: 0 8px 28px rgba(0,0,0,0.35);
         animation: fadeIn 0.8s ease;
     }
-
     @keyframes fadeIn {
         from { opacity: 0; transform: translateY(10px); }
         to { opacity: 1; transform: translateY(0); }
     }
-
-    /* Button */
     .btn-custom {
         width: 220px;
         background: linear-gradient(45deg, #00eaff, #9a4dff);
@@ -90,12 +77,10 @@
         transition: 0.2s;
         text-align: center;
     }
-
     .btn-custom:hover {
         opacity: 0.85;
         transform: scale(1.02);
     }
-
 </style>
 
 </head>
@@ -105,16 +90,13 @@
 
 <nav class="navbar navbar-expand-lg">
 <div class="container-fluid">
-
     <a class="navbar-brand" href="index.html">Numerology</a>
-
     <ul class="navbar-nav ms-auto">
         <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="generate.html">Generate</a></li>
         <li class="nav-item"><a class="nav-link active" href="result.html">Result</a></li>
         <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
     </ul>
-
 </div>
 </nav>
 
@@ -129,13 +111,11 @@
         <p id="personality"></p>
     </div>
 
-
     <div class="glass-card">
         <h4>Ngành nghề phù hợp</h4>
         <ul id="career"></ul>
     </div>
 
- 
     <div class="glass-card">
         <h4>Chu kỳ cuộc đời</h4>
         <p id="cycle"></p>
@@ -148,8 +128,7 @@
 
 <script>
 
-let number = localStorage.getItem("thinking");
-
+let number = localStorage.getItem("numerology_lifePath");
 
 document.getElementById("resultNumber").innerHTML = "Số chủ đạo: " + number;
 
@@ -168,8 +147,7 @@ let personalityData = {
 
 document.getElementById("personality").innerHTML = personalityData[number];
 
-
-// Nghề nghiệp phù hợp
+// NGHỀ NGHIỆP
 let careerData = {
     1:["Lãnh đạo", "Quản lý", "Startup", "Doanh nhân"],
     2:["Tư vấn", "Nhân sự", "Giáo viên", "Tâm lý"],
@@ -184,19 +162,15 @@ let careerData = {
 
 let html = "";
 careerData[number].forEach(job => html += `<li>${job}</li>`);
-
 document.getElementById("career").innerHTML = html;
 
 
-// Chu kỳ cuộc đời
 document.getElementById("cycle").innerHTML = `
     • Giai đoạn 1 (0–27 tuổi): Học hỏi và xây nền tảng.<br>
     • Giai đoạn 2 (28–54 tuổi): Phát triển mạnh mẽ và mở rộng bản thân.<br>
     • Giai đoạn 3 (55+ tuổi): Gặt hái thành tựu và sống trọn vẹn.
 `;
-
 </script>
-
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
